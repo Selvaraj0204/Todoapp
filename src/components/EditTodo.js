@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateTodo } from '../redux/Action';
-import { TextField, Button, Box, Card, CardContent, Typography, Snackbar, Alert } from '@mui/material';
+import { TextField, Button, Card, CardContent, Typography, Snackbar, Alert } from '@mui/material';
 
 function EditTodo() {
   const { id } = useParams();
@@ -11,7 +11,7 @@ function EditTodo() {
   const dispatch = useDispatch();
 
   const todos = useSelector(state => state.todos);
-  const todo = todos.find(t => t.id == id);
+  const todo = todos.find(t => t.id === id);
 
   const [task, setTask] = useState(todo.task);
   const [open, setOpen] = useState(false); // Snackbar state
