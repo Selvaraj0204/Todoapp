@@ -11,7 +11,7 @@ function EditTodo() {
   const dispatch = useDispatch();
 
   const todos = useSelector(state => state.todos);
-  const todo = todos.find(t => t.id === id);
+  const todo = todos.find(t => t.id === Number(id));
 
   const [task, setTask] = useState(todo.task);
   const [open, setOpen] = useState(false); // Snackbar state

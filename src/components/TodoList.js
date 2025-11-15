@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTodo } from '../redux/Action';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   Card, CardContent, Button, Typography, 
   Box, Snackbar, Alert, Dialog, DialogActions, 
@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 function TodoList() {
   const todos = useSelector(state => state.todos);
   const dispatch = useDispatch();
-
+  const nav=useNavigate();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
@@ -30,6 +30,9 @@ function TodoList() {
     dispatch(deleteTodo(selectedId));
     setOpenDialog(false);
     setOpenSnackbar(true);
+    setTimeout(()=>{
+        nav("/");
+    },1500)
   };
 
   return (
